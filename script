@@ -1,0 +1,50 @@
+// サンプルデータ（実際はAPIで取得）
+const standings = [
+  { rank: 1, team: "マンチェスター・シティ", points: 86 },
+  { rank: 2, team: "アーセナル", points: 83 },
+  { rank: 3, team: "リヴァプール", points: 80 },
+];
+
+const topScorers = [
+  { rank: 1, player: "ハーランド", team: "マンC", goals: 30 },
+  { rank: 2, player: "サラー", team: "リヴァプール", goals: 27 },
+];
+
+const teams = {
+  "マンチェスター・シティ": ["ハーランド", "デ・ブライネ", "フォーデン"],
+  "リヴァプール": ["サラー", "ファン・ダイク", "アリソン"],
+};
+
+function showTab(tabName) {
+  document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+  document.getElementById(tabName).style.display = "block";
+
+  if (tabName === "standings") loadStandings();
+  if (tabName === "topScorers") loadTopScorers();
+  if (tabName === "teams") loadTeams();
+}
+
+function loadStandings() {
+  const section = document.getElementById("standings");
+  section.innerHTML = "<h2>順位表</h2><ol>" +
+    standings.map(t => `<li>${t.rank}. ${t.team} (${t.points}pt)</li>`).join("") +
+    "</ol>";
+}
+
+function loadTopScorers() {
+  const section = document.getElementById("topScorers");
+  section.innerHTML = "<h2>得点ランキング</h2><ol>" +
+    topScorers.map(s => `<li>${s.rank}. ${s.player} - ${s.team}（${s.goals}点）</li>`).join("") +
+    "</ol>";
+}
+
+function loadTeams() {
+  const section = document.getElementById("teams");
+  section.innerHTML = "<h2>チームメンバー</h2>" +
+    Object.entries(teams).map(([team, players]) => 
+      `<h3>${team}</h3><ul>${players.map(p => `<li>${p}</li>`).join("")}</ul>`
+    ).join("");
+}
+
+// 初期表示
+showTab("standings");
