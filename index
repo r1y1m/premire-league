@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プレミアリーグ情報サイト</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏴 プレミアリーグ情報</h1>
+    <nav>
+      <button onclick="showTab('standings')">順位表</button>
+      <button onclick="showTab('topScorers')">得点ランキング</button>
+      <button onclick="showTab('teams')">チームメンバー</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="standings" class="tab-content"></section>
+    <section id="topScorers" class="tab-content" style="display: none;"></section>
+    <section id="teams" class="tab-content" style="display: none;"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
